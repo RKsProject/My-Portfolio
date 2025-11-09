@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rohan Khole | Portfolio</title>
+
+<style>
+/* --- GLOBAL --- */
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
+body{
+  background:radial-gradient(circle at top,#0a0a0a,#000);
+  color:#fff;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+}
+
+/* --- HEADER --- */
+header{
+  position:fixed;top:0;left:0;width:100%;
+  padding:20px 8%;
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(10px);
+  display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  z-index:100;
+}
+header h1{
+  color:#e50914;
+  font-weight:700;
+  letter-spacing:1px;
+  font-size:1.7rem;
+  animation:glow 2s infinite alternate;
+}
+@keyframes glow{
+  from{text-shadow:0 0 10px #e50914;}
+  to{text-shadow:0 0 25px #e50914;}
+}
+nav a{
+  margin-left:25px;
+  text-decoration:none;
+  color:#ccc;
+  font-weight:500;
+  transition:color .3s;
+}
+nav a:hover{color:#e50914;}
+
+/* --- HERO --- */
+.hero{
+  height:100vh;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  background:linear-gradient(180deg,rgba(0,0,0,.3),#000);
+  padding:0 8%;
+}
+.hero h2{color:#aaa;font-size:1.5rem;margin-bottom:10px;animation:fadeIn 1.5s ease;}
+.hero h1{
+  font-size:3.5rem;
+  background:linear-gradient(90deg,#e50914,#ff2e63);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:slideUp 1.5s ease;
+}
+.hero p{
+  color:#aaa;
+  max-width:600px;
+  margin:20px 0 40px;
+  line-height:1.5;
+  animation:fadeIn 2s ease;
+}
+.hero .btns{
+  display:flex;gap:15px;flex-wrap:wrap;justify-content:center;
+}
+.hero button,.hero a.resume-btn{
+  padding:14px 28px;
+  background:#e50914;color:#fff;border:none;border-radius:30px;
+  font-size:1rem;font-weight:600;
+  cursor:pointer;
+  text-decoration:none;
+  transition:transform .3s,box-shadow .3s;
+}
+.hero button:hover,.hero a.resume-btn:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 25px #e50914;
+}
+
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes slideUp{from{transform:translateY(50px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+
+/* --- SECTIONS --- */
+section{padding:100px 8%;}
+
+/* ABOUT */
+.about{text-align:center;}
+.about h2{color:#e50914;margin-bottom:20px;font-size:2rem;}
+.about p{color:#ccc;max-width:700px;margin:auto;line-height:1.6;font-size:1.1rem;animation:fadeIn 2s ease;}
+
+/* PROJECTS */
+.projects{text-align:center;}
+.projects h2{color:#e50914;margin-bottom:40px;font-size:2rem;}
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+.project-card{
+  background:rgba(255,255,255,0.05);
+  border-radius:15px;
+  padding:20px;
+  position:relative;
+  border:1px solid rgba(255,255,255,0.1);
+  transition:transform .4s,box-shadow .4s;
+  overflow:hidden;
+  text-decoration:none;
+  color:inherit;
+}
+.project-card::before{
+  content:"";
+  position:absolute;
+  top:-50%;left:-50%;
+  width:200%;height:200%;
+  background:radial-gradient(circle,rgba(229,9,20,0.3),transparent 70%);
+  opacity:0;transition:opacity .4s;
+}
+.project-card:hover::before{opacity:1;}
+.project-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 30px rgba(229,9,20,0.2);
+}
+.project-card h3{color:#fff;margin-bottom:10px;}
+.project-card p{color:#aaa;}
+
+/* CONTACT */
+.contact{text-align:center;}
+.contact h2{color:#e50914;margin-bottom:30px;font-size:2rem;}
+.contact-info{
+  max-width:500px;margin:0 auto 40px;line-height:1.8;
+  color:#ccc;
+}
+.contact-info a{color:#e50914;text-decoration:none;}
+.contact form{
+  max-width:500px;margin:auto;display:flex;flex-direction:column;gap:15px;
+}
+.contact input,.contact textarea{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  padding:12px;border-radius:8px;color:#fff;outline:none;
+}
+.contact input:focus,.contact textarea:focus{
+  border-color:#e50914;box-shadow:0 0 10px #e50914;
+}
+.contact button{
+  padding:12px;border:none;background:#e50914;color:#fff;border-radius:25px;
+  font-weight:600;cursor:pointer;
+  transition:transform .3s,box-shadow .3s;
+}
+.contact button:hover{transform:scale(1.05);box-shadow:0 0 20px #e50914;}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:40px;
+  background:rgba(255,255,255,0.05);
+  color:#aaa;
+  font-size:.9rem;
+  border-top:1px solid rgba(255,255,255,0.1);
+}
+
+/* REVEAL ANIMATION */
+.reveal{opacity:0;transform:translateY(50px);transition:all .8s ease;}
+.reveal.active{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  header{flex-direction:column;}
+  .hero h1{font-size:2.3rem;}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <h1>Rohan Khole</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <h2>Hello, I'm</h2>
+  <h1>Rohan Khole</h1>
+  <p>A passionate <b>Flutter & Web Developer</b> crafting beautiful digital experiences with modern design and
+                clean code.</p>
+  <div class="btns">
+    <button onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
+      View My Work
+    </button>
+    <a href="C:\Users\rohan\OneDrive\Desktop\rohan resume..docx" download class="resume-btn">📄 Download Resume</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about reveal" id="about">
+  <h2>About Me</h2>
+  <p>
+    I'm an innovative full-stack developer and designer who enjoys creating beautiful, high-performance web and mobile applications.  
+    My goal is to merge sleek UI design with powerful backend logic — building products that look great and perform flawlessly.
+  </p>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects reveal" id="projects">
+  <h2>Featured Projects</h2>
+  <div class="project-grid">
+    <a class="project-card" href="https://github.com/rohan-khole/rk-clothes-app" target="_blank">
+      <h3>🛍 RK Clothes App</h3>
+      <p>A premium Flutter app for men's clothing with Razorpay payments and Google Maps integration.</p>
+    </a>
+
+    <a class="project-card" href="https://github.com/rohan-khole/weather-sense" target="_blank">
+      <h3>🌤 WeatherSense</h3>
+      <p>Live weather tracking app that fetches real-time data via REST APIs with a smooth animated interface.</p>
+    </a>
+    
+    <a class="project-card" href="file:///C:/Users/rohan/OneDrive/Desktop/Rohan-to-do.html" target="_blank">
+      <h3>📝 To-Do List</h3>
+      <p>An advanced dark-mode to-do list with filters, local storage, and neon-glow effects.</p>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact reveal" id="contact">
+  <h2>Contact Me</h2>
+  <div class="contact-info">
+    <p>📧 Email: <a href="mailto:rohankhole4@gmail.com">rohankhole4@gmail.com</a></p>
+    <p>📞 Phone: <a href="tel:+917083101845">+91 7083101845</a></p>
+    <p>💼 LinkedIn: <a href="https://linkedin.com/in/rohan-khole" target="_blank">linkedin.com/in/rohan-khole</a></p>
+    <p>🐙 GitHub: <a href="https://github.com/RKsProject" target="_blank">github.com/RKsProject</a></p>
+  </div>
+
+  <form>
+    <input type="text" placeholder="Your Name" id="name" >
+    <input type="email" placeholder="Your Email" >
+    <textarea rows="5" placeholder="Your Message" ></textarea>
+    <button type="submit" id="sub1">Send Message</button>
+  </form>
+</section>
+
+<footer>© 2025 Rohan Khole | Designed with ❤️ in Dark Mode</footer>
+
+<script>
+// Scroll reveal animation
+function reveal(){
+  const reveals=document.querySelectorAll(".reveal");
+  for(let i=0;i<reveals.length;i++){
+    const windowHeight=window.innerHeight;
+    const elementTop=reveals[i].getBoundingClientRect().top;
+    const elementVisible=150;
+    if(elementTop<windowHeight-elementVisible){
+      reveals[i].classList.add("active");
+    }else{
+      reveals[i].classList.remove("active");
+    }
+  }
+}
+window.addEventListener("scroll",reveal);
+
+function submit()
+{
+    if(document.getElementById("name")=="")
+{
+    alert("first enter name");
+}
+    
+}
+</script>
+</body>
+</html>
